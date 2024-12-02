@@ -48,10 +48,18 @@
 
         </main>
 
-        <FooterComponent></FooterComponent>
+        <!-- <FooterComponent></FooterComponent> -->
     </body>
 </template>
-
+<!-- <route >
+    {
+        path:"/LoginView",
+        neme:"LoginView",
+        meta:{
+        layout: "old"
+        }
+    }
+</route> -->
 <script>
 // import FooterComponent from '../components/FooterComponent.vue'
 import LoadingAnimationComponent from '../components/LoadingAnimationComponent.vue'
@@ -62,7 +70,6 @@ import Firebase from "../firebase_settings/index.js"
 const auth = Firebase.auth
 
 export default {
-
     components: {
         // FooterComponent,
         LoadingAnimationComponent,
