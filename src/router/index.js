@@ -7,13 +7,46 @@
 // Composables
 import { createRouter, createWebHistory } from 'vue-router/auto'
 import { setupLayouts } from 'virtual:generated-layouts'
-import { routes } from 'vue-router/auto-routes'
+// import { routes } from 'vue-router/auto-routes'
+
+const routes = [
+  {
+      "path": "/",
+      "name": "/",
+      "component":() => import("@/pages/index.vue")
+  },
+  {
+      "path": "/HomeView",
+      "name": "/HomeView",
+      "component":() => import("@/pages/HomeView.vue")
+  },
+  {
+      "path": "/InboxTemp",
+      "name": "/InboxTemp",
+      "component":() => import("@/pages/InboxTemp.vue")
+  },
+  {
+      "path": "/Login",
+      "name": "/Login",
+      "component":() => import("@/pages/Login.vue")
+  },
+  {
+      "path": "/LoginView",
+      "name": "/LoginView",
+      "component":() => import("@/pages/LoginView.vue")
+  },
+  {
+    "path": "/NovelList",
+    "name": "/NovelList",
+    "component":() => import("@/pages/NovelList.vue")
+}
+]
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: setupLayouts(routes),
 })
-
+console.log(routes)
 // Workaround for https://github.com/vitejs/vite/issues/11804
 router.onError((err, to) => {
   if (err?.message?.includes?.('Failed to fetch dynamically imported module')) {
