@@ -8,6 +8,9 @@
 import { createRouter, createWebHistory } from 'vue-router/auto'
 import { setupLayouts } from 'virtual:generated-layouts'
 // import { routes } from 'vue-router/auto-routes'
+import NovelsList from '../pages/NovelsList.vue'; 
+import NovelDetails from '../pages/NovelDetails.vue'; 
+import ChapterDetails from '../pages/ChapterDetails.vue';
 
 const routes = [
   {
@@ -36,10 +39,23 @@ const routes = [
       "component":() => import("@/pages/LoginView.vue")
   },
   {
-    "path": "/NovelList",
-    "name": "/NovelList",
-    "component":() => import("@/pages/NovelList.vue")
-}
+    "path": "/NovelsList",
+    "name": "/NovelsList",
+    "component":() => import("@/pages/NovelsList.vue")
+  },
+  {
+    path: '/NovelsList/:novel',
+    name: '/NovelDetails',
+    component: NovelDetails,
+    props: true,
+  },
+  {
+    path: '/NovelsList/:novel/:chapter',
+    name: '/ChapterDetails',
+    component: ChapterDetails,
+    props: true,
+  },
+  
 ]
 
 const router = createRouter({
