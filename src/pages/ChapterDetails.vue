@@ -4,7 +4,6 @@
       <v-col cols="12">
         <v-card>
           <v-card-title class="text-h2">{{ chapter }}</v-card-title>
-          <!-- <v-card-text v-html="content"></v-card-text> -->
             <v-card-text>
                 <v-card
                     v-for="(sections,sectionsKey) in currentChapters.sections" 
@@ -39,8 +38,6 @@ export default {
     async mounted() {
         await this.getContents()
         await this.getChapterFullStory()
-        // this.getChapterStory('序');
-        // this.getChapterFullStory();
     },
     methods: {
         async getChapterFullStory() {
@@ -51,23 +48,13 @@ export default {
                 console.log('section', sectionsKey)
                 this.getChapterStory(value);
             });
-
-            //console.log('content', this.content);
-
-            // await this.currentChapters.sections.forEach(section => {
-            //     console.log('section',section)
-            //     this.getChapterStory(section);
-            // });
         },
         async getChapterStory(section) {
             const sectionPath = `/Novels/${this.novel}/${this.chapter}/${section}.md`;
             console.log("sectionPath",sectionPath);
               try {
                 const response = await axios.get(sectionPath);
-                
-                // this.content = marked(response.data);
                 this.content[section] = marked(response.data);
-                //console.log('this.content',this.content)
               } catch (error) {
                 console.error('Error fetching the chapter content:', error);
               }
@@ -76,8 +63,6 @@ export default {
             const path = `/Novels/${this.novel}/contents.json`
             try {
                 const response = await axios.get(path);
-                // console.log('path',path);
-                // console.log('readJson：',response.data);
                 this.novelContent = response.data;
                 console.log('novelContent', this.novelContent);
                 this.novelContent.chapters

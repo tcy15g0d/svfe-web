@@ -25,8 +25,7 @@
     data() {
       return {
         novelsListPath : '/Novels/NovelsList.json',
-        // novels: ['ShadedVerdureFleetingExistence', '測試'], // 根據實際情況設置或從API獲取
-        novels: [], // 根據實際情況設置或從API獲取
+        novels: [],
       };
     },
     created(){
