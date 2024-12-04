@@ -24,7 +24,7 @@
     <v-container>
         <v-row>
             <v-col cols="12">
-                <h2>{{ novelContent.title }}</h2>
+                <p class="text-h2 font-weight-bold">{{ novelContent.title }}</p>
                 <!-- <v-card>
                     <v-card-text v-html="directory"></v-card-text>
                 </v-card> -->

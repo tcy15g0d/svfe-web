@@ -1,0 +1,44 @@
+[
+    {
+        "icon": "mdi-home",
+        "text": "首頁",
+        "link": "/"
+    },
+    {
+        "icon": "mdi-book-open-variant-outline",
+        "text": "書籍列表",
+        "link": "/NovelsList"
+    },
+    {
+        "icon": "mdi-lightning-bolt",
+        "text": "設定",
+        "submenu":[
+            {
+                "icon": "mdi-chart-line",
+                "text": "開發中欄位1",
+                "link": "/"
+            },
+            {
+                "icon": "mdi-gauge",
+                "text": "開發中欄位2",
+                "link": "/"
+            }
+        ]
+    },
+    {
+        "icon": "mdi-lightning-bolt",
+        "text": "假的設定2",
+        "submenu":[
+            {
+                "icon": "mdi-chart-line",
+                "text": "開發中欄位12",
+                "link": "/"
+            },
+            {
+                "icon": "mdi-gauge",
+                "text": "開發中欄位22",
+                "link": "/"
+            }
+        ]
+    }
+]

@@ -2,7 +2,7 @@
     <v-container>
       <v-row>
         <v-col cols="12">
-          <h1>Novel List</h1>
+          <p class="text-h2 font-weight-bold">書籍列表</p>
           <v-list>
             <v-list-item
               v-for="novel in novels"
