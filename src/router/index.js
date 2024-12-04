@@ -34,9 +34,10 @@ const routes = [
     "component": () => import("@/pages/InboxTemp.vue")
   },
   {
-    "path": "/Login",
-    "name": "/Login",
-    "component": () => import("@/pages/Login.vue")
+    path: "/Login",
+    name: "/Login",
+    component: () => import("@/pages/Login.vue"),
+    meta: { layout: "loginLayout" }, // 使用 DefaultLayout
   },
   {
     "path": "/LoginView",
@@ -44,9 +45,9 @@ const routes = [
     "component": () => import("@/pages/LoginView.vue")
   },
   {
-    "path": "/NovelsList",
-    "name": "/NovelsList",
-    "component": () => import("@/pages/NovelsList.vue"),
+    path: "/NovelsList",
+    name: "/NovelsList",
+    component: () => import("@/pages/NovelsList.vue"),
     meta: { requiresAuth: true }, // 需要登入
   },
   {
@@ -90,35 +91,17 @@ router.isReady().then(() => {
   localStorage.removeItem('vuetify:dynamic-reload')
 })
 
-let isAuthReady = false;
-
-// 等待 Firebase 初始化完成
-onAuthStateChanged(auth, () => {
-  isAuthReady = true;
-});
-
 // 路由守衛
 router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some((record) => record.meta.requiresAuth);
-  console.log('requiresAuth',requiresAuth);
-  console.log('auth.currentUser',auth.currentUser);
-
-  if (!isAuthReady) {
-    // 如果 Auth 尚未初始化，等待完成再進行導航
-    const unwatch = auth.onAuthStateChanged(() => {
-      unwatch(); // 停止監聽
-      next(); // 繼續導航
-    });
-    return;
-  }
-
-  if (requiresAuth && !auth.currentUser) {
-    // 未登入，導向登入頁面
-    next("/Login");
-  } else {
-    // 已登入或不需要驗證
-    next();
-  }
+  const user = JSON.parse(localStorage.getItem("user"));//全局獲取使用者
+    if (requiresAuth && !user) {
+      // 未登入，導向登入頁面
+      next("/Login");
+    } else {
+      // 已登入或不需要驗證
+      next();
+    }
 });
 
 export default router

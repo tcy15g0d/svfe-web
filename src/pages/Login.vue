@@ -156,8 +156,8 @@ export default {
                 // サインイン成功時
                 .then((userCredential) => {
                     const user = userCredential.user;
+                    this.setUser(user);
                     console.log("ログイン成功 " + user.email)
-                    console.log(" auth" + auth);
                     this.goToHome()
                 })
 
@@ -186,6 +186,10 @@ export default {
             } else {
                 this.errorMessage = "ログインに失敗しました。予期せぬエラーが発生しました。"
             }
+        },
+        setUser(user){
+            // 將使用者資訊存入 localStorage
+            localStorage.setItem("user", JSON.stringify(user));
         },
         required (v) {
         return !!v || '請輸入此欄'
