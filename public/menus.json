@@ -11,7 +11,7 @@
     },
     {
         "icon": "mdi-lightning-bolt",
-        "text": "設定",
+        "text": "開發用預留欄位",
         "submenu":[
             {
                 "icon": "mdi-chart-line",
@@ -21,22 +21,6 @@
             {
                 "icon": "mdi-gauge",
                 "text": "開發中欄位2",
-                "link": "/"
-            }
-        ]
-    },
-    {
-        "icon": "mdi-lightning-bolt",
-        "text": "假的設定2",
-        "submenu":[
-            {
-                "icon": "mdi-chart-line",
-                "text": "開發中欄位12",
-                "link": "/"
-            },
-            {
-                "icon": "mdi-gauge",
-                "text": "開發中欄位22",
                 "link": "/"
             }
         ]

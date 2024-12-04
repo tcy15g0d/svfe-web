@@ -20,7 +20,6 @@
           <template v-slot:activator="{ props }">
             <template v-if="item.link" >
               <v-list-item 
-              v-bind="props" 
               :href="item.link" 
               :prepend-icon="item.icon" 
               :title="item.text"
@@ -105,10 +104,12 @@ export default {
     },
     drawerState(){
       // 恢復抽屜狀態
-      if(localStorage.getItem('drawer') == null){
-        localStorage.setItem('drawer',this.drawer);
+      const savedDrawer = localStorage.getItem("drawer") == 'true';
+      console.log(savedDrawer);
+      if (savedDrawer) {
+        this.drawer = savedDrawer;
+        console.log('his',this.drawer);
       }
-      this.drawer = localStorage.getItem('drawer');
     },
     selectedItemState(){
        // 恢復選中狀態
@@ -132,6 +133,7 @@ export default {
     setSelectedItem(item){
       this.selectedItem = item;
       sessionStorage.setItem("selectedItem", item);
+      console.log('nowItem',this.selectedItem)
       this.setOpen();
     },
     setOpen(){
