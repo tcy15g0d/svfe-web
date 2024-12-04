@@ -4,48 +4,32 @@
       <router-view />
     </v-main>
   </v-app>
-  <!-- <component :is="layoutComponent">
-    <router-view />
-  </component> -->
 </template>
 
-<!-- <script setup>
-import { computed } from 'vue';
-import { useRoute } from 'vue-router';
-import oldLayout from '@/layouts/old.vue';
-import defaultLayout from '@/layouts/default.vue';
-
-const route = useRoute();
-const layout = computed(() => {
-  const metaLayout = route.meta.layout;
-  console.log(metaLayout);
-  return metaLayout === 'old' ? 'oldLayout' : 'defaultLayout';
-});
-
-</script> -->
-
-<!-- <script>
-import { computed } from 'vue';
-import { useRoute } from 'vue-router';
-import oldLayout from '@/layouts/old.vue';
-import defaultLayout from '@/layouts/default.vue';
+<script>
+import { onAuthStateChanged } from "firebase/auth";
+import Firebase from "./firebase_settings/index.js"
+const auth = Firebase.auth
 
 export default {
-  components: {
-    oldLayout,
-    defaultLayout,
+  data() {
+    return {
+      currentUser: null, // 儲存目前的使用者資訊
+    };
   },
-  setup() {
-    const route = useRoute();
-    // 計算要使用的 Layout 元件
-    const layoutComponent = computed(() => {
-      return route.meta.layout === 'old' ? oldLayout : defaultLayout;
+  created() {
+    // 監聽使用者的登入狀態
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // 使用者已登入
+        console.log("使用者已登入：", user);
+        this.currentUser = user;
+      } else {
+        // 使用者未登入
+        console.log("使用者未登入");
+        this.currentUser = null;
+      }
     });
-    return { layoutComponent };
   },
 };
-</script> -->
-
-<!-- <script setup>
-  //
-</script> -->
+</script>

@@ -157,6 +157,7 @@ export default {
                 .then((userCredential) => {
                     const user = userCredential.user;
                     console.log("ログイン成功 " + user.email)
+                    console.log(" auth" + auth);
                     this.goToHome()
                 })
 
